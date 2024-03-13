@@ -33,8 +33,8 @@ class EmailController extends Controller
                 'email' => $request->email,
                 'user_message' => $request->message,
             ], function ($mail) use ($request) {
-                $mail->from("akutagawakarim@gmail.com" , "Contact");
-                $mail->to($request->email)->subject('Contact Message');
+                $mail->from($request->email , "Contact");
+                $mail->to(env('EMAIL_RECIPE'))->subject('Contact Message');
             });
             return response()->json([
                 'data' => 'success',
